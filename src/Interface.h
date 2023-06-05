@@ -7,6 +7,9 @@ bool g_is_s_pressed{ false };
 bool g_is_i_pressed{ false };
 bool g_is_k_pressed{ false };
 
+float g_ball_xSpeed{ 0.0005f };
+float g_ball_ySpeed{ 0.0f };
+
 void updateLeftPaddle(mjf::Pong* pong)
 {
 	if (g_is_w_pressed)
@@ -63,6 +66,16 @@ void keyboardHandler(unsigned char k, int x, int y)
 	case 'K':
 		g_is_k_pressed = !g_is_k_pressed;
 		break;
+	case 'a':
+	case 'A':
+		g_ball_xSpeed *= 1.1f;
+		g_ball_ySpeed *= 1.1f;
+		break;
+	case 'z':
+	case 'Z':
+		g_ball_xSpeed /= 1.1f;
+		g_ball_ySpeed /= 1.1f;
+		break;
 	}
 
 }
@@ -92,26 +105,23 @@ void keyboardUpHandler(unsigned char k, int x, int y)
 
 void updateBall(mjf::Pong* pong)
 {
-	static float xSpeed{ 0.0005f };
-	static float ySpeed{ 0.0f };
-
-	pong->moveBall(xSpeed, ySpeed);
+	pong->moveBall(g_ball_xSpeed, g_ball_ySpeed);
 	
 	if (pong->ballHasCollisionWithLeftPaddle())
 	{
-		xSpeed = 0.0005f;
-		ySpeed = pong->_paddleLeftSpeed;
+		if (g_ball_xSpeed < 0) g_ball_xSpeed *= -1;
+		g_ball_ySpeed = pong->_paddleLeftSpeed;
 	}
 
 	if (pong->ballHasCollisionWithRightPaddle())
 	{
-		xSpeed = -0.0005f;
-		ySpeed = pong->_paddleRightSpeed;
+		if (g_ball_xSpeed > 0) g_ball_xSpeed *= -1;
+		g_ball_ySpeed = pong->_paddleRightSpeed;
 	}
 
 	if (pong->getBall().getOrigin().y > 0.8f || pong->getBall().getOrigin().y < -0.8f)
 	{
-		ySpeed = -ySpeed;
+		g_ball_ySpeed = -g_ball_ySpeed;
 	}
 }
 

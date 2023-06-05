@@ -21,6 +21,7 @@ void renderTexts()
 	glRasterPos2f(-0.2, 0.85);
 	glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)leftScore.c_str());
 
+
 	// Render right score
 	glRasterPos2f(0.2, 0.85);
 	glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char*)rightScore.c_str());
