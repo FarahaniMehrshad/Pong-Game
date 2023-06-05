@@ -1,5 +1,4 @@
 #include "GL/glew.h"
-#include <irrKlang.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -96,15 +95,11 @@ int main(int argc, char** argv)
 
 	glutDisplayFunc(display);
 
-	using namespace irrklang;
-
-	ISoundEngine* SoundEngine = createIrrKlangDevice();
-
-	SoundEngine->play2D("pong.mp3", true);
+	g_soundEngine->play2D("pong.mp3", true);
 
 	glutMainLoop();
 
-	delete SoundEngine;
+	delete g_soundEngine;
 
 	return 0;
 }
