@@ -3,6 +3,9 @@
 
 namespace mjf
 {
+	// Abstract a rectangle in opengl
+	// Just give it a coordination, width and height
+	// It will give you some triangles to render and shape which is enough to shape a rectangle
 	class Rect
 	{
 	public:

@@ -107,18 +107,21 @@ void updateBall(mjf::Pong* pong)
 {
 	pong->moveBall(g_ball_xSpeed, g_ball_ySpeed);
 	
+	// Bounce the ball when collision with the left paddle
 	if (pong->ballHasCollisionWithLeftPaddle())
 	{
 		if (g_ball_xSpeed < 0) g_ball_xSpeed *= -1;
 		g_ball_ySpeed = pong->_paddleLeftSpeed;
 	}
 
+	// Bounce the ball when collision with the right paddle
 	if (pong->ballHasCollisionWithRightPaddle())
 	{
 		if (g_ball_xSpeed > 0) g_ball_xSpeed *= -1;
 		g_ball_ySpeed = pong->_paddleRightSpeed;
 	}
 
+	// Bounce the ball when collision with the top or bottom of the screen
 	if (pong->getBall().getOrigin().y > 0.8f || pong->getBall().getOrigin().y < -0.8f)
 	{
 		g_ball_ySpeed = -g_ball_ySpeed;

@@ -3,6 +3,7 @@
 
 namespace mjf
 {
+	// Handle the game main logic
 	class Pong
 	{
 	public:

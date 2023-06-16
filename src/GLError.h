@@ -12,7 +12,8 @@ static void glClearError()
 {
 	while (glGetError() != GL_NO_ERROR);
 }
-
+// This function helps us handle opengl error in a more simple way
+// it uses macro to call the actual opengl function and check it's errors
 static bool glCheckError(const char* function, const char* file, int line)
 {
 	while (GLenum error = glGetError())
