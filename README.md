@@ -14,4 +14,4 @@ Visual Studio Solution is also available for Windows.
 
 
 ## Image
-![Pong Game Image](https://github.com/FarahaniMehrshad/Pong-Game/blob/main/Pong.gif)
+![Pong Game Image](https://github.com/FarahaniMehrshad/Pong-Game/blob/timer/Pong.gif)
