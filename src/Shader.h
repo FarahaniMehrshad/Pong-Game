@@ -10,6 +10,9 @@ struct ShaderProgramSource
 	std::string FragmentSource;
 };
 
+// Read shader files line by line and extract the vertex and fragments shader
+// Both shaders are in the same files and seprated with "#"
+// for example before a vertex shader sourse code, it is written #shader vertex
 static ShaderProgramSource ParseShader(const std::string& filepath)
 {
 
